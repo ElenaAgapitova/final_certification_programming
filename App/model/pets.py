@@ -14,6 +14,12 @@ class Cats(Pets):
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
 
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date
+
 
 class Dogs(Pets):
     def __init__(self, name, command, birth_date):
@@ -27,6 +33,12 @@ class Dogs(Pets):
 
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
+
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date
 
 
 class Hamsters(Pets):
@@ -42,3 +54,8 @@ class Hamsters(Pets):
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
 
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date

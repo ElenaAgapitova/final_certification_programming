@@ -14,6 +14,12 @@ class Horses(PackAnimals):
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
 
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date
+
 
 class Camels(PackAnimals):
     def __init__(self, name, command, birth_date):
@@ -28,6 +34,12 @@ class Camels(PackAnimals):
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
 
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date
+
 
 class Donkeys(PackAnimals):
     def __init__(self, name, command, birth_date):
@@ -41,3 +53,9 @@ class Donkeys(PackAnimals):
 
     def add_command(self, new_commands):
         self.__command = self.__command + ', ' + new_commands
+
+    def get_name(self):
+        return self.__name
+
+    def get_birth_date(self):
+        return self.__birth_date
