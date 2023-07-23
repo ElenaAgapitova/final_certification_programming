@@ -51,3 +51,20 @@ class RegistryAnimals:
                  animal.get_command(), animal.get_birth_date()]
                 for i, animal in enumerate(self.__log_registry, start=1)]
         return tabulate(tabl, headers=headers, tablefmt="fancy_grid", stralign='center')
+
+    def list_kind_pets(self):
+        kind_pets = set()
+        for item in self.__log_registry:
+            if item.get_id_type() == 1:
+                kind_pets.add(item.get_kind_animals())
+        return kind_pets
+
+    def list_kind_pack(self):
+        kind_pack = set()
+        for item in self.__log_registry:
+            if item.get_id_type() == 2:
+                kind_pack.add(item.get_kind_animals())
+        return kind_pack
+
+    def remove(self):
+        self.__log_registry.pop()

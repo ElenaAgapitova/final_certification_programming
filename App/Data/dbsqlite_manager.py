@@ -9,7 +9,7 @@ class DataManager:
     def __init__(self, path: str):
         self.__path = path
 
-    def read_cat(self, log_registry: RegistryAnimals):
+    def __read_cat(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -29,7 +29,7 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_dog(self, log_registry: RegistryAnimals):
+    def __read_dog(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -49,7 +49,7 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_hamster(self, log_registry: RegistryAnimals):
+    def __read_hamster(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -69,7 +69,7 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_horse(self, log_registry: RegistryAnimals):
+    def __read_horse(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -89,7 +89,7 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_camel(self, log_registry: RegistryAnimals):
+    def __read_camel(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -109,7 +109,7 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_donkey(self, log_registry: RegistryAnimals):
+    def __read_donkey(self, log_registry: RegistryAnimals):
         cursor = None
         connect = None
         try:
@@ -129,3 +129,10 @@ class DataManager:
             if connect:
                 connect.close()
 
+    def read_db(self, log_registry: RegistryAnimals):
+        self.__read_cat(log_registry)
+        self.__read_dog(log_registry)
+        self.__read_hamster(log_registry)
+        self.__read_horse(log_registry)
+        self.__read_camel(log_registry)
+        self.__read_donkey(log_registry)
