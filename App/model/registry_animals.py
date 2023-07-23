@@ -36,7 +36,7 @@ class RegistryAnimals:
         self.__log_registry.append(donkey)
 
     @property
-    def tabl(self):
+    def tabl_registry(self):
         """
         Формирует представление реестра в виде таблицы.
         :return: список всех животных в виде таблицы
@@ -50,4 +50,3 @@ class RegistryAnimals:
         return tabulate(tabl, headers=headers, tablefmt="fancy_grid", stralign='center')
 
 
-    

@@ -14,4 +14,3 @@ class Animals(ABC):
     @abstractmethod
     def get_type_animals(self):
         """Абстрактный метод, который возвращает описание типа животного"""
-
