@@ -8,6 +8,9 @@ class RegistryAnimals:
     def __init__(self):
         self.__log_registry = []
 
+    def get_log_registry(self):
+        return self.__log_registry
+
     def number_of_animals(self):
         return len(self.__log_registry)
 
@@ -48,5 +51,3 @@ class RegistryAnimals:
                  animal.get_command(), animal.get_birth_date()]
                 for i, animal in enumerate(self.__log_registry, start=1)]
         return tabulate(tabl, headers=headers, tablefmt="fancy_grid", stralign='center')
-
-
