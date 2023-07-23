@@ -12,7 +12,10 @@ class Cats(Pets):
         return self.__command
 
     def add_command(self, new_commands):
-        self.__command = self.__command + ', ' + new_commands
+        if self.__command == '' or self.__command == 'не обучен':
+            self.__command = new_commands
+        else:
+            self.__command = self.__command + ', ' + new_commands
 
     def get_name(self):
         return self.__name
@@ -32,7 +35,10 @@ class Dogs(Pets):
         return self.__command
 
     def add_command(self, new_commands):
-        self.__command = self.__command + ', ' + new_commands
+        if self.__command == '' or self.__command == 'не обучен':
+            self.__command = new_commands
+        else:
+            self.__command = self.__command + ', ' + new_commands
 
     def get_name(self):
         return self.__name
@@ -52,7 +58,10 @@ class Hamsters(Pets):
         return self.__command
 
     def add_command(self, new_commands):
-        self.__command = self.__command + ', ' + new_commands
+        if self.__command == '' or self.__command == 'не обучен':
+            self.__command = new_commands
+        else:
+            self.__command = self.__command + ', ' + new_commands
 
     def get_name(self):
         return self.__name
