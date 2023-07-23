@@ -129,13 +129,3 @@ class DataManager:
             if connect:
                 connect.close()
 
-
-# logs = RegistryAnimals()
-# data = DataManager('human_friends2.db')
-# data.read_cat(logs)
-# data.read_dog(logs)
-# data.read_hamster(logs)
-# data.read_horse(logs)
-# data.read_camel(logs)
-# data.read_donkey(logs)
-# print(logs.tabl_registry)
