@@ -39,17 +39,11 @@ class RegistryAnimals:
         donkey = Donkeys(name, command, birth_date)
         self.__log_registry.append(donkey)
 
-    __function_add_pets = {'кошка': add_cat, 'собака': add_dog, 'хомяк': add_hamster}
-    __function_add_pack = {'лошадь': add_horse, 'осёл': add_donkey, 'верблюд': add_camel}
+    __function_add_animal = {'кошка': add_cat, 'собака': add_dog, 'хомяк': add_hamster,
+                             'лошадь': add_horse, 'осёл': add_donkey, 'верблюд': add_camel}
 
-    def add_pets(self, kind, name, command, birth_date):
-        for key, value in self.__function_add_pets.items():
-            if key == kind:
-                value(self, name, command, birth_date)
-                break
-
-    def add_packs(self, kind, name, command, birth_date):
-        for key, value in self.__function_add_pack.items():
+    def add_animal(self, kind, name, command, birth_date):
+        for key, value in self.__function_add_animal.items():
             if key == kind:
                 value(self, name, command, birth_date)
                 break

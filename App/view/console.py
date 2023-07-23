@@ -20,19 +20,16 @@ class Console(View):
                   '\t3. Выбрать животное\n'
                   '\t4. Выход\n')
             user_choice = self.__get_number(4, 'Выберите пункт в меню: ')
-            self.__start_program(user_choice)
-
-    def __start_program(self, number: int):
-        match number:
-            case 1:
-                print("\n\t\t\t\t\t\t\t\t\t\t\tРеестр животных питомника")
-                print(self.presenter.get_tabl_registry())
-            case 2:
-                self.__add_animals()
-            case 3:
-                pass
-            case 4:
-                self.__working = False
+            match user_choice:
+                case 1:
+                    print("\n\t\t\t\t\t\t\t\t\t\t\tРеестр животных питомника")
+                    print(self.presenter.get_tabl_registry())
+                case 2:
+                    self.__add_animals()
+                case 3:
+                    pass
+                case 4:
+                    self.__working = False
 
     def __add_animals(self):
         print('\n========== Типы животных в питомнике ===========')
@@ -42,34 +39,21 @@ class Console(View):
         user_choice = self.__get_number(3, "Выберите пункт в меню: ")
         match user_choice:
             case 1:
-                self.__add_pets()
+                self.__add_animal(self.presenter.all_kinds_pets())
             case 2:
-                self.__add_pack()
+                self.__add_animal(self.presenter.all_kinds_pack())
             case 3:
                 return
 
-    def __add_pets(self):
-        print(f'\nВиды животных в питомнике: {self.presenter.all_kinds_pets()}\n')
+    def __add_animal(self, kinds):
+        print(f'\nВиды животных в питомнике: {kinds}\n')
         kind = input('Введите вид животного: ').lower()
-        if kind in self.presenter.all_kinds_pets():
+        if kind in kinds:
             name = input('Введите имя животного: ').capitalize()
             command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
                             ' "не обучен": ')
             birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
-            self.presenter.add_pets(kind, name, command, birth_date)
-        else:
-            print("\nТакого вида в настоящий момент нет в питомнике. Обратитесь к администратору!")
-            return
-
-    def __add_pack(self):
-        print(f'\nВиды животных в питомнике: {self.presenter.all_kinds_pack()}\n')
-        kind = input('Введите вид животного: ').lower()
-        if kind in self.presenter.all_kinds_pack():
-            name = input('Введите имя животного: ').capitalize()
-            command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
-                            ' "не обучен": ')
-            birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
-            self.presenter.add_packs(kind, name, command, birth_date)
+            self.presenter.add_animal(kind, name, command, birth_date)
         else:
             print("\nТакого вида в настоящий момент нет в питомнике. Обратитесь к администратору!")
             return

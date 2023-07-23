@@ -31,8 +31,7 @@ class Presenter:
     def remove(self):
         self.__log_registry.remove()
 
-    def add_pets(self, kind, name, command, birth_date):
-        self.__log_registry.add_pets(kind, name, command, birth_date)
+    def add_animal(self, kind, name, command, birth_date):
+        self.__log_registry.add_animal(kind, name, command, birth_date)
 
-    def add_packs(self, kind, name, command, birth_date):
-        self.__log_registry.add_packs(kind, name, command, birth_date)
+
