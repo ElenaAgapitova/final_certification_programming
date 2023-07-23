@@ -12,7 +12,7 @@ class Cats(Pets):
         return self.__command
 
     def add_command(self, new_commands):
-        if self.__command == '' or self.__command == 'не обучен':
+        if self.__command == '' or self.__command in ['не обучен', 'не обучено']:
             self.__command = new_commands
         else:
             self.__command = self.__command + ', ' + new_commands

@@ -28,23 +28,11 @@ class Presenter:
     def all_kinds_pack(self):
         return self.__log_registry.list_kind_pack()
 
-    def add_cat(self, name, command, birth_date):
-        self.__log_registry.add_cat(name, command, birth_date)
-
-    def add_dog(self, name, command, birth_date):
-        self.__log_registry.add_dog(name, command, birth_date)
-
-    def add_hamster(self, name, command, birth_date):
-        self.__log_registry.add_hamster(name, command, birth_date)
-
-    def add_horse(self, name, command, birth_date):
-        self.__log_registry.add_horse(name, command, birth_date)
-
-    def add_camel(self, name, command, birth_date):
-        self.__log_registry.add_camel(name, command, birth_date)
-
-    def add_donkey(self, name, command, birth_date):
-        self.__log_registry.add_donkey(name, command, birth_date)
-
     def remove(self):
         self.__log_registry.remove()
+
+    def add_pets(self, kind, name, command, birth_date):
+        self.__log_registry.add_pets(kind, name, command, birth_date)
+
+    def add_packs(self, kind, name, command, birth_date):
+        self.__log_registry.add_packs(kind, name, command, birth_date)
