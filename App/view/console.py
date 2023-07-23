@@ -56,16 +56,7 @@ class Console(View):
             command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
                             ' "не обучен": ')
             birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
-            match kind:
-                case 'кошка':
-                    self.presenter.add_cat(name, command, birth_date)
-                    self.__save(kind, name, command, birth_date)
-                case 'собака':
-                    self.presenter.add_dog(name, command, birth_date)
-                    self.__save(kind, name, command, birth_date)
-                case 'хомяк':
-                    self.presenter.add_hamster(name, command, birth_date)
-                    self.__save(kind, name, command, birth_date)
+            self.presenter.add_pets(kind, name, command, birth_date)
         else:
             print("\nТакого вида в настоящий момент нет в питомнике. Обратитесь к администратору!")
             return
@@ -78,13 +69,7 @@ class Console(View):
             command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
                             ' "не обучен": ')
             birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
-            match kind:
-                case 'лошадь':
-                    self.presenter.add_horse(name, command, birth_date)
-                case 'верблюд':
-                    self.presenter.add_camel(name, command, birth_date)
-                case 'осёл':
-                    self.presenter.add_donkey(name, command, birth_date)
+            self.presenter.add_packs(kind, name, command, birth_date)
         else:
             print("\nТакого вида в настоящий момент нет в питомнике. Обратитесь к администратору!")
             return
@@ -99,7 +84,7 @@ class Console(View):
                 return int(user_input)
             print(f"\nВведите число от 1 до {size}")
 
-    def __save(self, kind, name, command, birth_date):
+    def __save_pets(self, kind, name, command, birth_date):
         print(f'\nВы добавили животное:\n{kind} {name}\nкоманды: {command}\nд.р. {birth_date}')
         user_choice = input('Сохранить изменения?(д/н): ').lower()
         if user_choice in ['да', 'д', 'y', 'yes']:

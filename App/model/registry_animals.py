@@ -5,6 +5,7 @@ from model.pets import Cats, Dogs, Hamsters
 
 
 class RegistryAnimals:
+
     def __init__(self):
         self.__log_registry = []
 
@@ -37,6 +38,21 @@ class RegistryAnimals:
     def add_donkey(self, name, command, birth_date):
         donkey = Donkeys(name, command, birth_date)
         self.__log_registry.append(donkey)
+
+    __function_add_pets = {'кошка': add_cat, 'собака': add_dog, 'хомяк': add_hamster}
+    __function_add_pack = {'лошадь': add_horse, 'осёл': add_donkey, 'верблюд': add_camel}
+
+    def add_pets(self, kind, name, command, birth_date):
+        for key, value in self.__function_add_pets.items():
+            if key == kind:
+                value(self, name, command, birth_date)
+                break
+
+    def add_packs(self, kind, name, command, birth_date):
+        for key, value in self.__function_add_pack.items():
+            if key == kind:
+                value(self, name, command, birth_date)
+                break
 
     @property
     def tabl_registry(self):
