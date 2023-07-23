@@ -7,6 +7,3 @@ if __name__ == '__main__':
     view = Console()
     presenter = Presenter(view, registry, 'human_friends2.db')
     view.start()
-
-
-

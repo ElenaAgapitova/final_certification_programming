@@ -16,8 +16,8 @@ class Console(View):
         while self.__working:
             print('\n========== Главное меню ===========')
             print('\t1. Открыть реестр животных\n'
-                  '\t2. Добавить животное\n'
-                  '\t3. Выбрать животное\n'
+                  '\t2. Добавить животное в питомник\n'
+                  '\t3. Выбрать животное для просмотра команд\n'
                   '\t4. Выход\n')
             user_choice = self.__get_number(4, 'Выберите пункт в меню: ')
             match user_choice:
@@ -72,7 +72,7 @@ class Console(View):
 
     @staticmethod
     def __save_animal(kind, name, command, birth_date):
-        print(f'\nВы добавили животное:\n{kind} {name}\nкоманды: {command}\nд.р. {birth_date}')
+        print(f'\nВы хотите добавить животное:\n{kind} {name}\nкоманды: {command}\nд.р. {birth_date}')
         user_choice = input('Сохранить изменения?(д/н): ').lower()
         if user_choice in ['да', 'д', 'y', 'yes']:
             return True

@@ -136,3 +136,5 @@ class DataManager:
         self.__read_horse(log_registry)
         self.__read_camel(log_registry)
         self.__read_donkey(log_registry)
+
+    
