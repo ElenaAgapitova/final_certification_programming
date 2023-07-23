@@ -1,4 +1,5 @@
 from view.abstract_view import View
+from datetime import datetime
 
 
 class Console(View):
@@ -51,8 +52,8 @@ class Console(View):
         if kind in kinds:
             name = input('Введите имя животного: ').capitalize()
             command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
-                            ' "не обучен": ')
-            birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
+                            ' "не обучено": ')
+            birth_date = self.__get_date('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
             if self.__save_animal(kind, name, command, birth_date):
                 self.presenter.add_animal(kind, name, command, birth_date)
                 print('Запись сохранена и добавлена в базу данных!')
@@ -79,3 +80,13 @@ class Console(View):
         else:
             print('\nЗапись не сохранена!\n')
             return False
+
+    @staticmethod
+    def __get_date(text):
+        while True:
+            user_input = input(text)
+            try:
+                datetime.strptime(user_input, "%Y-%m-%d")
+                return user_input
+            except ValueError:
+                print("Неверный формат даты!")

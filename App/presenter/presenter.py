@@ -19,8 +19,8 @@ class Presenter:
     def get_tabl_registry(self):
         return self.__log_registry.tabl_registry
 
-    def get_log_registry(self):
-        return self.__log_registry
+    # def get_log_registry(self):
+    #     return self.__log_registry
 
     def all_kinds_pets(self):
         return self.__log_registry.list_kind_pets()

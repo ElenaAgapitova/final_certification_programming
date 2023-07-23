@@ -137,4 +137,5 @@ class DataManager:
         self.__read_camel(log_registry)
         self.__read_donkey(log_registry)
 
-    
+    def __save_cat(self):
+        pass
