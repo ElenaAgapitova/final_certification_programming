@@ -1,0 +1,99 @@
+@startuml
+abstract class Animals {
+  -id_type: str
+  -type_animals:str
+  __init__()
+ {abstract} get_id_type()
+ {abstract} get_type_animals()
+}
+
+class Pets {
+ -kind_animals: str
+ __init__()
+ get_id_type()
+ get_type_animals()
+ get_kind_animals()
+}
+
+class PackAnimals {
+  -kind_animals: str
+ __init__()
+ get_id_type()
+ get_type_animals()
+ get_kind_animals()
+}
+
+class Cats {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+
+class Dogs {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+class Horses {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+class Hamsters {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+
+class Camels {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+class Donkeys {
+ -name:str
+ -command:str
+ -birth_date: str
+ __init__()
+ get_name()
+ get_command()
+ get_birth_date()
+ add_command()
+}
+
+Animals <|-- Pets
+Animals <|-- PackAnimals
+
+Pets <|-- Cats
+Pets <|-- Dogs
+Pets <|-- Hamsters
+
+PackAnimals <|-- Horses
+PackAnimals <|-- Camels
+PackAnimals <|-- Donkeys
+@enduml
