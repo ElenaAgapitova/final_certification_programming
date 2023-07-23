@@ -28,9 +28,6 @@ class Presenter:
     def all_kinds_pack(self):
         return self.__log_registry.list_kind_pack()
 
-    def remove(self):
-        self.__log_registry.remove()
-
     def add_animal(self, kind, name, command, birth_date):
         self.__log_registry.add_animal(kind, name, command, birth_date)
 

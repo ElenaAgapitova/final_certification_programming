@@ -53,7 +53,9 @@ class Console(View):
             command = input('Введите список команд через запятую, которыми обучено животное. Или введите'
                             ' "не обучен": ')
             birth_date = input('Введите дату рождения животного в формате ГГГГ-ММ-ДД: ')
-            self.presenter.add_animal(kind, name, command, birth_date)
+            if self.__save_animal(kind, name, command, birth_date):
+                self.presenter.add_animal(kind, name, command, birth_date)
+                print('Запись сохранена и добавлена в базу данных!')
         else:
             print("\nТакого вида в настоящий момент нет в питомнике. Обратитесь к администратору!")
             return
@@ -68,11 +70,12 @@ class Console(View):
                 return int(user_input)
             print(f"\nВведите число от 1 до {size}")
 
-    def __save_pets(self, kind, name, command, birth_date):
+    @staticmethod
+    def __save_animal(kind, name, command, birth_date):
         print(f'\nВы добавили животное:\n{kind} {name}\nкоманды: {command}\nд.р. {birth_date}')
         user_choice = input('Сохранить изменения?(д/н): ').lower()
         if user_choice in ['да', 'д', 'y', 'yes']:
-            pass
+            return True
         else:
-            self.presenter.remove()
-            print('\nЗапись удалена!\n')
+            print('\nЗапись не сохранена!\n')
+            return False

@@ -75,6 +75,3 @@ class RegistryAnimals:
             if item.get_id_type() == 2:
                 kind_pack.add(item.get_kind_animals())
         return kind_pack
-
-    def remove(self):
-        self.__log_registry.pop()
