@@ -11,7 +11,6 @@ class Console(View):
 
     def start(self):
         self.presenter.read_db()
-        if self.presenter.get_log_registry():
-            print("\n\t\t\t\t\t\t\t\t\t\t\tРеестр животных питомника")
-            print(self.presenter.get_tabl_registry())
+        print("\n\t\t\t\t\t\t\t\t\t\t\tРеестр животных питомника")
+        print(self.presenter.get_tabl_registry())
 
