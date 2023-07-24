@@ -5,5 +5,3 @@ class Counter:
     def __add__(self):
         self.__value += 1
 
-
-

@@ -2,10 +2,6 @@ from Data.dbsqlite_manager import DataManager
 
 
 class Presenter:
-    """
-    Presenter для паттерна MVP.
-    Принимает на вход экземпляры View и Notebook и связывает их между собой.
-    """
 
     def __init__(self, view, log_registry, path: str):
         self.__view = view
@@ -18,9 +14,6 @@ class Presenter:
 
     def get_tabl_registry(self):
         return self.__log_registry.tabl_registry
-
-    # def get_log_registry(self):
-    #     return self.__log_registry
 
     def all_kinds_pets(self):
         return self.__log_registry.list_kind_pets()
