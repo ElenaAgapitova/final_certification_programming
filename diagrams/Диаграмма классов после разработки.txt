@@ -136,10 +136,10 @@ PackAnimals <|-[#green,bold]- Donkeys
 
 package data {
 class SqLiteManager {
-path:str
++path:str
 -function_read_animal:dict
 -dict_kinds:dict
-__init__()
++__init__()
 -read_cat(log_registry: RegistryAnimals)
 -read_dog(log_registry: RegistryAnimals)
 -read_hamster(log_registry: RegistryAnimals)
