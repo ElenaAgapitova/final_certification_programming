@@ -15,10 +15,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM cats")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM cats")
             rows = cursor.fetchall()
             for row in rows:
-                cat = Cats(row[0], row[1], row[2])
+                cat = Cats(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(cat)
             return "Успешно"
         except sqlite3.Error as e:
@@ -36,10 +36,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM dogs")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM dogs")
             rows = cursor.fetchall()
             for row in rows:
-                dog = Dogs(row[0], row[1], row[2])
+                dog = Dogs(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(dog)
             return "Успешно"
         except sqlite3.Error as e:
@@ -57,10 +57,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM hamsters")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM hamsters")
             rows = cursor.fetchall()
             for row in rows:
-                hamster = Hamsters(row[0], row[1], row[2])
+                hamster = Hamsters(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(hamster)
             return "Успешно"
         except sqlite3.Error as e:
@@ -78,10 +78,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM horses")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM horses")
             rows = cursor.fetchall()
             for row in rows:
-                horse = Horses(row[0], row[1], row[2])
+                horse = Horses(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(horse)
             return "Успешно"
         except sqlite3.Error as e:
@@ -99,10 +99,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM camels")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM camels")
             rows = cursor.fetchall()
             for row in rows:
-                camel = Camels(row[0], row[1], row[2])
+                camel = Camels(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(camel)
             return "Успешно"
         except sqlite3.Error as e:
@@ -120,10 +120,10 @@ class DataManager:
         try:
             connect = sqlite3.connect(self.__path)
             cursor = connect.cursor()
-            cursor.execute("SELECT name, command, birth_date FROM donkeys")
+            cursor.execute("SELECT id_animal, name, command, birth_date FROM donkeys")
             rows = cursor.fetchall()
             for row in rows:
-                donkey = Donkeys(row[0], row[1], row[2])
+                donkey = Donkeys(row[0], row[1], row[2], row[3])
                 log_registry.get_log_registry().append(donkey)
             return "Успешно"
         except sqlite3.Error as e:
@@ -160,6 +160,27 @@ class DataManager:
                            "VALUES (?, ?, ?, ?)", data)
             connect.commit()
             return "Запись добавлена в базу данных"
+        except sqlite3.Error as e:
+            return f"Ошибка при работе с базой данных: {e}"
+
+        finally:
+            if cursor:
+                cursor.close()
+            if connect:
+                connect.close()
+
+    def save_command(self, index, log_registry: RegistryAnimals):
+        cursor = None
+        connect = None
+        kind = self.__dict_kinds[log_registry.get_log_registry()[index].get_kind_animals()]
+        id_animal = log_registry.get_log_registry()[index].get_id_animal()
+        try:
+            connect = sqlite3.connect(self.__path)
+            cursor = connect.cursor()
+            cursor.execute(f"UPDATE {kind} SET command = ? WHERE id_animal = ?",
+                           (log_registry.get_command(index), id_animal))
+            connect.commit()
+            return "Список команд успешно изменен."
         except sqlite3.Error as e:
             return f"Ошибка при работе с базой данных: {e}"
 

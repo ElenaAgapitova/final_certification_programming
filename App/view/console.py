@@ -17,7 +17,7 @@ class Console(View):
         read_db = self.presenter.read_db()
         if read_db == "Успешно":
             while self.__working:
-                print('\n========== Главное меню ===========')
+                print('\n\t============= Главное меню ==============')
                 print('\t1. Открыть реестр животных\n'
                       '\t2. Добавить животное в питомник\n'
                       '\t3. Выбрать животное для просмотра и добавления команд\n'
@@ -30,7 +30,7 @@ class Console(View):
                     case "2":
                         self.__add_animals()
                     case "3":
-                        pass
+                        self.__show_add_command()
                     case "4":
                         self.__working = False
         else:
@@ -97,3 +97,32 @@ class Console(View):
                     print("Неверный формат даты!")
             return user_input
 
+    def __show_add_command(self):
+        print("\n\tДля просмотра и добавления команд необходимо ввести номер животного в реестре"
+              "(ID животного). Если вы не знаете ID животного, введите 2 и в главном меню выберите 1 "
+              "для просмотра реестра животных.\n")
+        print('\n\t============= Меню ==============')
+        print('\t1. Ввести номер животного для просмотра или добавления команд\n'
+              '\t2. Выход\n')
+        user_choice = self.__get_number(3, "Выберите пункт в меню: ")
+        match user_choice:
+            case "1":
+                user_input = self.__get_number(self.presenter.size_registry(), "Введите ID(№) "
+                                                                               "животного: ")
+                index = int(user_input) - 1
+                self.__add_command(index)
+            case "2":
+                return
+
+    def __add_command(self, index):
+        print()
+        print(self.presenter.find_animal(index))
+        print(f'\nСписок команд: {self.presenter.get_command(index)}\n')
+        user_answer = input('Добавить команду?(д/н): ')
+        if user_answer in ['да', 'д', 'y', 'yes']:
+            commands = input('Введите команды через запятую: ')
+            self.presenter.add_command(index, commands)
+            print(self.presenter.save_command(index))
+        else:
+            print('Операция отклонена.')
+            return

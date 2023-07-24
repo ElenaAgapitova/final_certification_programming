@@ -15,28 +15,28 @@ class RegistryAnimals:
     def number_of_animals(self):
         return len(self.__log_registry)
 
-    def __add_cat(self, name, command, birth_date):
-        cat = Cats(name, command, birth_date)
+    def __add_cat(self, name, command, birth_date, id_animal=None):
+        cat = Cats(id_animal, name, command, birth_date)
         self.__log_registry.append(cat)
 
-    def __add_dog(self, name, command, birth_date):
-        dog = Dogs(name, command, birth_date)
+    def __add_dog(self, name, command, birth_date, id_animal=None):
+        dog = Dogs(id_animal, name, command, birth_date)
         self.__log_registry.append(dog)
 
-    def __add_hamster(self, name, command, birth_date):
-        hamster = Hamsters(name, command, birth_date)
+    def __add_hamster(self, name, command, birth_date, id_animal=None):
+        hamster = Hamsters(id_animal, name, command, birth_date)
         self.__log_registry.append(hamster)
 
-    def __add_horse(self, name, command, birth_date):
-        horse = Horses(name, command, birth_date)
+    def __add_horse(self, name, command, birth_date, id_animal=None):
+        horse = Horses(id_animal, name, command, birth_date)
         self.__log_registry.append(horse)
 
-    def __add_camel(self, name, command, birth_date):
-        camel = Camels(name, command, birth_date)
+    def __add_camel(self, name, command, birth_date, id_animal=None):
+        camel = Camels(id_animal, name, command, birth_date)
         self.__log_registry.append(camel)
 
-    def __add_donkey(self, name, command, birth_date):
-        donkey = Donkeys(name, command, birth_date)
+    def __add_donkey(self, name, command, birth_date, id_animal=None):
+        donkey = Donkeys(id_animal, name, command, birth_date)
         self.__log_registry.append(donkey)
 
     __function_add_animal = {'кошка': __add_cat, 'собака': __add_dog, 'хомяк': __add_hamster,
@@ -75,3 +75,12 @@ class RegistryAnimals:
             if item.get_id_type() == 2:
                 kind_pack.add(item.get_kind_animals())
         return kind_pack
+
+    def find_animal(self, id_animal):
+        return self.__log_registry[id_animal]
+
+    def get_command(self, index):
+        return self.__log_registry[index].get_command()
+
+    def add_command(self, index, commands):
+        self.__log_registry[index].add_command(commands)

@@ -2,11 +2,15 @@ from model.class_pets import Pets
 
 
 class Cats(Pets):
-    def __init__(self, name, command, birth_date):
+    def __init__(self, id_animal, name, command, birth_date):
         super().__init__(kind_animals="кошка")
         self.__name = name
         self.__command = command
         self.__birth_date = birth_date
+        self.__id_animal = id_animal
+
+    def get_id_animal(self):
+        return self.__id_animal
 
     def get_command(self):
         return self.__command
@@ -23,13 +27,21 @@ class Cats(Pets):
     def get_birth_date(self):
         return self.__birth_date
 
+    def __str__(self):
+        return f'{self.get_kind_animals()} {self.__name}\nкоманды: {self.__command}\n' \
+               f'{self.__birth_date}'
+
 
 class Dogs(Pets):
-    def __init__(self, name, command, birth_date):
+    def __init__(self, id_animal, name, command, birth_date):
         super().__init__(kind_animals="собака")
         self.__name = name
         self.__command = command
         self.__birth_date = birth_date
+        self.__id_animal = id_animal
+
+    def get_id_animal(self):
+        return self.__id_animal
 
     def get_command(self):
         return self.__command
@@ -46,13 +58,21 @@ class Dogs(Pets):
     def get_birth_date(self):
         return self.__birth_date
 
+    def __str__(self):
+        return f'{self.get_kind_animals()} {self.__name}\nкоманды: {self.__command}\n' \
+               f'{self.__birth_date}'
+
 
 class Hamsters(Pets):
-    def __init__(self, name, command, birth_date):
+    def __init__(self, id_animal, name, command, birth_date):
         super().__init__(kind_animals="хомяк")
         self.__name = name
         self.__command = command
         self.__birth_date = birth_date
+        self.__id_animal = id_animal
+
+    def get_id_animal(self):
+        return self.__id_animal
 
     def get_command(self):
         return self.__command
@@ -68,3 +88,7 @@ class Hamsters(Pets):
 
     def get_birth_date(self):
         return self.__birth_date
+
+    def __str__(self):
+        return f'{self.get_kind_animals()} {self.__name}\nкоманды: {self.__command}\n' \
+               f'{self.__birth_date}'
