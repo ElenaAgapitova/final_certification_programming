@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from view.abstract_view import View
+from view.counter import Counter
 
 
 class Console(View):
@@ -80,6 +81,12 @@ class Console(View):
         print(f'\nВы хотите добавить животное:\n{kind} {name}\nкоманды: {command}\nд.р. {birth_date}')
         user_choice = input('Сохранить изменения?(д/н): ').lower()
         if user_choice in ['да', 'д', 'y', 'yes']:
+            with Counter() as counter:
+                if name != '' and command != '' and birth_date != '':
+                    counter.add()
+                    print(f"Значение счетчика: {counter.count}")
+                else:
+                    raise Exception('fail')
             return True
         else:
             print('\nЗапись не сохранена!\n')
