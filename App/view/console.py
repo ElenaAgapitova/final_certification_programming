@@ -67,7 +67,7 @@ class Console(View):
 
     @staticmethod
     def __get_number(size: int, text: str):
-        """Возвращает индекс для списка заметок или меню"""
+        """Возвращает номер пункта меню"""
         while True:
             user_input = input(text)
             if (user_input.isdigit() and
@@ -97,4 +97,3 @@ class Console(View):
                     print("Неверный формат даты!")
             return user_input
 
-    
