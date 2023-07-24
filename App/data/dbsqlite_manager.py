@@ -5,7 +5,7 @@ from model.pets import Cats, Dogs, Hamsters
 from model.registry_animals import RegistryAnimals
 
 
-class DataManager:
+class SqLiteManager:
     def __init__(self, path: str):
         self.__path = path
 
