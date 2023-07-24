@@ -20,8 +20,9 @@ class DataManager:
             for row in rows:
                 cat = Cats(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(cat)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -40,8 +41,9 @@ class DataManager:
             for row in rows:
                 dog = Dogs(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(dog)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -60,8 +62,9 @@ class DataManager:
             for row in rows:
                 hamster = Hamsters(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(hamster)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -80,8 +83,9 @@ class DataManager:
             for row in rows:
                 horse = Horses(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(horse)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -100,8 +104,9 @@ class DataManager:
             for row in rows:
                 camel = Camels(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(camel)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -120,8 +125,9 @@ class DataManager:
             for row in rows:
                 donkey = Donkeys(row[0], row[1], row[2])
                 log_registry.get_log_registry().append(donkey)
+            return "Успешно"
         except sqlite3.Error as e:
-            print("Ошибка при работе с базой данных:", e)
+            return f"Ошибка при работе с базой данных: {e}"
 
         finally:
             if cursor:
@@ -129,13 +135,36 @@ class DataManager:
             if connect:
                 connect.close()
 
-    def read_db(self, log_registry: RegistryAnimals):
-        self.__read_cat(log_registry)
-        self.__read_dog(log_registry)
-        self.__read_hamster(log_registry)
-        self.__read_horse(log_registry)
-        self.__read_camel(log_registry)
-        self.__read_donkey(log_registry)
+    __function_read_animal = [__read_cat, __read_dog, __read_hamster,
+                              __read_horse, __read_donkey, __read_camel]
 
-    def __save_cat(self):
-        pass
+    def read_db(self, log_registry: RegistryAnimals):
+        result = "Успешно"
+        for item in self.__function_read_animal:
+            result = item(self, log_registry)
+            if result.startswith('Ошибка'):
+                return result
+        return result
+
+    __dict_kinds = {'кошка': 'cats', 'собака': 'dogs', 'хомяк': 'hamsters',
+                    'лошадь': 'horses', 'осёл': 'donkeys', 'верблюд': 'camels'}
+
+    def save_animal(self, type_id, kind, name, command, birth_date):
+        cursor = None
+        connect = None
+        try:
+            connect = sqlite3.connect(self.__path)
+            cursor = connect.cursor()
+            data = (type_id, name, command, birth_date)
+            cursor.execute(f"INSERT INTO {self.__dict_kinds[kind]} (type_id, name, command, birth_date) "
+                           "VALUES (?, ?, ?, ?)", data)
+            connect.commit()
+            return "Запись добавлена в базу данных"
+        except sqlite3.Error as e:
+            return f"Ошибка при работе с базой данных: {e}"
+
+        finally:
+            if cursor:
+                cursor.close()
+            if connect:
+                connect.close()

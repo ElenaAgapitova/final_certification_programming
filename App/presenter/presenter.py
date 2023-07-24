@@ -14,7 +14,7 @@ class Presenter:
         self.__data = DataManager(path)
 
     def read_db(self):
-        self.__data.read_db(self.__log_registry)
+        return self.__data.read_db(self.__log_registry)
 
     def get_tabl_registry(self):
         return self.__log_registry.tabl_registry
@@ -30,5 +30,9 @@ class Presenter:
 
     def add_animal(self, kind, name, command, birth_date):
         self.__log_registry.add_animal(kind, name, command, birth_date)
+
+    def save_animal_into_bd(self, type_id, kind, name, command, birth_date):
+        return self.__data.save_animal(type_id, kind, name, command, birth_date)
+
 
 

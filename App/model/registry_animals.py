@@ -15,32 +15,32 @@ class RegistryAnimals:
     def number_of_animals(self):
         return len(self.__log_registry)
 
-    def add_cat(self, name, command, birth_date):
+    def __add_cat(self, name, command, birth_date):
         cat = Cats(name, command, birth_date)
         self.__log_registry.append(cat)
 
-    def add_dog(self, name, command, birth_date):
+    def __add_dog(self, name, command, birth_date):
         dog = Dogs(name, command, birth_date)
         self.__log_registry.append(dog)
 
-    def add_hamster(self, name, command, birth_date):
+    def __add_hamster(self, name, command, birth_date):
         hamster = Hamsters(name, command, birth_date)
         self.__log_registry.append(hamster)
 
-    def add_horse(self, name, command, birth_date):
+    def __add_horse(self, name, command, birth_date):
         horse = Horses(name, command, birth_date)
         self.__log_registry.append(horse)
 
-    def add_camel(self, name, command, birth_date):
+    def __add_camel(self, name, command, birth_date):
         camel = Camels(name, command, birth_date)
         self.__log_registry.append(camel)
 
-    def add_donkey(self, name, command, birth_date):
+    def __add_donkey(self, name, command, birth_date):
         donkey = Donkeys(name, command, birth_date)
         self.__log_registry.append(donkey)
 
-    __function_add_animal = {'кошка': add_cat, 'собака': add_dog, 'хомяк': add_hamster,
-                             'лошадь': add_horse, 'осёл': add_donkey, 'верблюд': add_camel}
+    __function_add_animal = {'кошка': __add_cat, 'собака': __add_dog, 'хомяк': __add_hamster,
+                             'лошадь': __add_horse, 'осёл': __add_donkey, 'верблюд': __add_camel}
 
     def add_animal(self, kind, name, command, birth_date):
         for key, value in self.__function_add_animal.items():
