@@ -104,7 +104,7 @@ class Console(View):
         print('\n\t============= Меню ==============')
         print('\t1. Ввести номер животного для просмотра или добавления команд\n'
               '\t2. Выход\n')
-        user_choice = self.__get_number(3, "Выберите пункт в меню: ")
+        user_choice = self.__get_number(2, "Выберите пункт в меню: ")
         match user_choice:
             case "1":
                 user_input = self.__get_number(self.presenter.size_registry(), "Введите ID(№) "

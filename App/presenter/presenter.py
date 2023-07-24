@@ -27,8 +27,8 @@ class Presenter:
     def save_animal_into_bd(self, type_id, kind, name, command, birth_date):
         return self.__data.save_animal(type_id, kind, name, command, birth_date)
 
-    def find_animal(self, id_animal):
-        return self.__log_registry.find_animal(id_animal)
+    def find_animal(self, index):
+        return self.__log_registry.find_animal(index)
 
     def get_command(self, index):
         return self.__log_registry.get_command(index)
