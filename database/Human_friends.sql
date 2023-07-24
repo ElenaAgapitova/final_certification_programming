@@ -109,6 +109,7 @@ UNION ALL
 SELECT id_animal, 'осёл' AS kind_animals, type_id, name, command, birth_date
 FROM Donkeys;
 
+DROP VIEW IF EXISTS Animals;
 CREATE VIEW Animals AS SELECT id_type, type_animals, kind_animals, id_animal, name, command, birth_date 
 FROM (
 	SELECT ta.id_type, ta.type_animals, 'кошка' AS kind_animals, c.id_animal, c.name, c.command, c.birth_date
@@ -147,8 +148,28 @@ FROM (
 
 -- SELECT * FROM Animals;
 
-DROP TABLE IF EXISTS young_animals;
-CREATE TABLE young_animals (
+
+DROP VIEW IF EXISTS pets;
+CREATE VIEW pets AS (
+SELECT 
+	id_type, type_animals, kind_animals, 
+	id_animal, name, command, birth_date  
+FROM animals
+WHERE id_type = 1
+);
+
+DROP VIEW IF EXISTS pack_animals;
+CREATE VIEW pack_animals AS (
+SELECT 
+	id_type, type_animals, kind_animals, 
+	id_animal, name, command, birth_date  
+FROM animals
+WHERE id_type = 2
+);
+
+
+DROP VIEW IF EXISTS young_animals;
+CREATE VIEW young_animals AS (
 SELECT 
 	id_type, type_animals, kind_animals, 
 	id_animal, name, command, birth_date, 
@@ -158,7 +179,3 @@ WHERE TIMESTAMPDIFF(MONTH, birth_date, NOW()) > 12 AND TIMESTAMPDIFF(MONTH, birt
 );
 
 -- SELECT * FROM young_animals;
-
-
-
-
