@@ -153,7 +153,7 @@ class SqLiteManager {
 }
 
 
-RegistryAnimals -[#blue,dashed,thickness=2]- SqLiteManager
+RegistryAnimals <-- SqLiteManager
 
 package "view"{
   abstract class View {
