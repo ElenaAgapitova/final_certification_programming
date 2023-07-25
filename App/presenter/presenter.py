@@ -1,10 +1,11 @@
 from data.dbsqlite_manager import SqLiteManager
+from model import RegistryAnimals
 from view.abstract_view import View
 
 
 class Presenter:
 
-    def __init__(self, view: View, log_registry, data: SqLiteManager):
+    def __init__(self, view: View, log_registry: RegistryAnimals, data: SqLiteManager):
         self.view = view
         self.log_registry = log_registry
         self.view.set_presenter(self)
