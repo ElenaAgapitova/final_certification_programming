@@ -86,7 +86,7 @@ class Console(View):
                     counter.add()
                     print(f"Значение счетчика: {counter.count}")
                 else:
-                    raise Exception('fail')
+                    raise Exception('Данные некорректны! Заполнены не все значения.')
             return True
         else:
             print('\nЗапись не сохранена!\n')
